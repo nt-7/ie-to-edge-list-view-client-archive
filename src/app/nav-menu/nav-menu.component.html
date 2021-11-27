@@ -1,0 +1,23 @@
+<header>
+  <nav class="navbar is-light">
+    <div class="navbar-brand">
+      <h1 class="navbar-item"><i>IEToEdgeListView</i></h1>
+      <div class="navbar-burger" data-target="navbarExampleTransparentExample" (click)="burgerClick()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbarExampleTransparentExample" class="navbar-menu" [ngClass]="status ? 'is-active' : ''">
+      <div class="navbar-start">
+        <a class="navbar-item nav-link text-dark" [routerLink]="['/']">
+          Home
+        </a>
+        <a class="navbar-item nav-link text-dark" [routerLink]="['/list']">
+          Current List
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

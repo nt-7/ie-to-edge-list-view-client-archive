@@ -1,0 +1,13 @@
+.home-img {
+    width: 80%;
+    max-width: 550px;
+    min-width: 80px;
+    text-align: center;
+    border: 1px dotted skyblue;
+    border-radius: 2em;
+    margin: 20px;
+}
+
+.home-content {
+    margin-bottom: 8%;
+}

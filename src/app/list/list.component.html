@@ -1,0 +1,57 @@
+<div class="container is-fluid">
+  <div class="content">
+    <h1 id="tableLabel">Current Edge Compatibility List</h1>
+    <div>
+      <p>This displays the current Microsoft Edge compatibility list from Microsoft server.</p>
+      <ul>
+        <li>
+          <strong>Offical docs</strong> : <a href="https://docs.microsoft.com/en-us/microsoft-edge/web-platform/ie-to-microsoft-edge-redirection" target="_blank" rel="noopener">
+            Moving users to Microsoft Edge from Internet Explorer</a>
+        </li>
+        <li>
+          <strong>Original compatibility List</strong> : <a href="https://edge.microsoft.com/neededge/v1" target="_blank" rel="noopener">
+            Need Microsoft Edge list</a>
+        </li>
+      </ul>
+    </div>
+    <hr />
+    <div class="field is-horizontal filter-content">
+      <div class="field-label is-normal label-content">
+        <label class="label">Filter by</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <p class="control">
+            <input type="text" class="input" placeholder="url" aria-label="FilterByUrl" aria-describedby="input-url-for-filter" [(ngModel)]="filterUrl">
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spinner-border text-secondary" role="status" *ngIf="!compatList">
+      <span class="sr-only">Loading...</span>
+    </div>
+
+    <p *ngIf="compatList?.version"><u>Current version</u> : {{ compatList?.version }}</p>
+    <div class="list-table">
+      <table class='table table-striped' aria-labelledby="IEToEdge Label" *ngIf="compatList?.sites">
+        <thead>
+          <tr>
+            <th>url</th>
+            <th>open-in</th>
+            <th>allow-redirect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let site of compatList?.sites">
+            <ng-template [ngIf]="!filterUrl || site.url.match(filterUrl)">
+                <td>{{ site.url }}</td>
+                <td>{{ site.openin }}</td>
+                <td>{{ site.allowredirect }}</td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
